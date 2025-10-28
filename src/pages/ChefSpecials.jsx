@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChefHat, Star, Coffee, Leaf, X, Fire } from "lucide-react";
+import { ChefHat, Star, Coffee, Leaf, X, Zap } from "lucide-react"; // ✅ Replaced Fire with Zap
 
 // Import dish images
 import salmon from "../assets/grilledsalmon.webp";
@@ -57,7 +57,7 @@ export default function ChefSpecials() {
       img: eventFiesta,
       desc: "A festive platter with a mix of seasonal delicacies. Ideal for parties and celebrations, bursting with flavors.",
       price: 450,
-      icon: <Fire className="w-6 h-6 text-red-500" />,
+      icon: <Zap className="w-6 h-6 text-red-500" />, // ✅ Replaced Fire with Zap
       badge: "Seasonal",
     },
     {
