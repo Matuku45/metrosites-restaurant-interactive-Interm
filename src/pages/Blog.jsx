@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Coffee, Leaf, Star, X } from "lucide-react";
+import { Coffee, Leaf, Star, Tag, X } from "lucide-react";
 
 // Import blog images
 import tea from "../assets/fivewaystomaketea.webp";
 import ingredients from "../assets/ingridients.webp";
 import wine from "../assets/WINEPAIRING.webp";
+import beef from "../assets/beefwillington.webp";
+import salmon from "../assets/grilledsalmon.webp";
+import pasta from "../assets/pasta.webp";
 
 export default function Blog() {
   const [selected, setSelected] = useState(null);
@@ -15,27 +18,64 @@ export default function Blog() {
       id: 1,
       title: "5 Ways to Enjoy Your Morning Coffee",
       img: tea,
-      desc: "Discover the art of brewing the perfect cup, pairing it with pastries, and creating a cozy morning ritual to kickstart your day. Learn tips on flavor combinations, brewing techniques, and ways to savor every sip.",
+      desc: "Discover the art of brewing the perfect cup, pairing it with pastries, and creating a cozy morning ritual to kickstart your day.",
       date: "Oct 20, 2025",
       icon: <Coffee className="w-6 h-6 text-yellow-300" />,
+      price: 45.0, // ZAR
     },
     {
       id: 2,
       title: "Seasonal Ingredients: Why Fresh Matters",
       img: ingredients,
-      desc: "A deep dive into why fresh, local, and seasonal ingredients make all the difference in taste, nutrition, and presentation. From farm to table, explore the benefits of quality produce in every dish.",
+      desc: "A deep dive into why fresh, local, and seasonal ingredients make all the difference in taste, nutrition, and presentation.",
       date: "Oct 15, 2025",
       icon: <Leaf className="w-6 h-6 text-green-400" />,
+      price: 75.0,
     },
     {
       id: 3,
       title: "Wine Pairings for Every Dish",
       img: wine,
-      desc: "Learn how to elevate your dining experience with wine pairing tips from our expert sommelier. Understand flavor profiles, balance, and how to match wine with appetizers, mains, and desserts for a full culinary journey.",
+      desc: "Learn how to elevate your dining experience with wine pairing tips from our expert sommelier.",
       date: "Oct 10, 2025",
       icon: <Star className="w-6 h-6 text-yellow-300" />,
+      price: 120.0,
+    },
+    {
+      id: 4,
+      title: "Beef Wellington Special",
+      img: beef,
+      desc: "Our chef’s signature Beef Wellington, perfectly cooked and served with seasonal vegetables and a rich red wine sauce.",
+      date: "Oct 25, 2025",
+      icon: <Tag className="w-6 h-6 text-red-400" />,
+      price: 350.0,
+    },
+    {
+      id: 5,
+      title: "Grilled Salmon Delight",
+      img: salmon,
+      desc: "Freshly grilled salmon with lemon butter sauce, served with steamed veggies and a side of fragrant rice.",
+      date: "Oct 22, 2025",
+      icon: <Star className="w-6 h-6 text-yellow-300" />,
+      price: 220.0,
+    },
+    {
+      id: 6,
+      title: "Creamy Pasta Extravaganza",
+      img: pasta,
+      desc: "Indulge in our creamy pasta with fresh herbs, parmesan, and a touch of garlic, perfect for a comforting meal.",
+      date: "Oct 18, 2025",
+      icon: <Leaf className="w-6 h-6 text-green-400" />,
+      price: 150.0,
     },
   ];
+
+  const formatCurrency = (amount) => {
+    return new Intl.NumberFormat("en-ZA", {
+      style: "currency",
+      currency: "ZAR",
+    }).format(amount);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-950 via-blue-900 to-indigo-900 text-white py-20 px-6">
@@ -45,7 +85,7 @@ export default function Blog() {
         transition={{ duration: 0.8 }}
         className="text-5xl font-bold mb-12 text-center text-yellow-300"
       >
-        Our <span className="text-white">Blog</span>
+        Our <span className="text-white">Blog & Specials</span>
       </motion.h1>
 
       {/* Blog Cards */}
@@ -69,7 +109,10 @@ export default function Blog() {
             </div>
             <div className="p-6">
               <h2 className="text-2xl font-bold mb-3">{post.title}</h2>
-              <p className="text-gray-200 mb-4 line-clamp-3">{post.desc}</p>
+              <p className="text-gray-200 mb-2 line-clamp-3">{post.desc}</p>
+              <p className="text-gray-300 font-semibold mb-2">
+                Price: {formatCurrency(post.price)}
+              </p>
               <p className="text-gray-400 text-sm">{post.date}</p>
             </div>
           </motion.div>
@@ -110,7 +153,10 @@ export default function Blog() {
                 <h2 className="text-3xl font-bold mb-4 text-yellow-300">
                   {selected.title}
                 </h2>
-                <p className="text-gray-200 mb-6">{selected.desc}</p>
+                <p className="text-gray-200 mb-4">{selected.desc}</p>
+                <p className="text-gray-300 font-semibold mb-4">
+                  Price: {formatCurrency(selected.price)}
+                </p>
                 <p className="text-gray-400 italic">{selected.date}</p>
               </div>
             </motion.div>
