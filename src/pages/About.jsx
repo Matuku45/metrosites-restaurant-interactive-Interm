@@ -1,12 +1,23 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Users, Heart, Award } from "lucide-react";
+import { Users, Heart, Award, Coffee, ChefHat } from "lucide-react";
+
+// Import chef images
+import chef1 from "../assets/chef.jpg";
+import chef2 from "../assets/chef1.jpg";
+import chef3 from "../assets/chef2.jpg";
 
 export default function About() {
   const stats = [
     { icon: <Heart />, label: "Happy Customers", value: "10K+" },
     { icon: <Users />, label: "Team Members", value: "25+" },
     { icon: <Award />, label: "Awards Won", value: "8+" },
+  ];
+
+  const chefs = [
+    { name: "Chef Thabo", img: chef1 },
+    { name: "Chef Lienberg", img: chef2 },
+    { name: "Chef Mark", img: chef3 },
   ];
 
   return (
@@ -17,6 +28,7 @@ export default function About() {
       className="pt-24 pb-16 bg-gradient-to-b from-indigo-900 via-blue-900 to-sky-900 text-white min-h-screen"
     >
       <div className="container mx-auto px-6 text-center">
+        {/* Story Section */}
         <h1 className="text-4xl font-extrabold mb-6">
           Our <span className="text-yellow-300">Story</span>
         </h1>
@@ -33,7 +45,7 @@ export default function About() {
             <motion.div
               key={i}
               whileHover={{ scale: 1.05 }}
-              className="bg-blue-800/40 rounded-2xl p-6 shadow-lg backdrop-blur-sm"
+              className="bg-gradient-to-tr from-yellow-400/30 to-yellow-300/10 rounded-2xl p-6 shadow-lg backdrop-blur-sm border border-yellow-300"
             >
               <div className="text-yellow-300 flex justify-center mb-3 text-3xl">
                 {s.icon}
@@ -49,21 +61,25 @@ export default function About() {
           Meet Our <span className="text-yellow-300">Chefs</span>
         </h2>
         <div className="grid md:grid-cols-3 gap-8">
-          {["Chef Thabo", "Chef Lerato", "Chef Mark"].map((name, i) => (
+          {chefs.map((chef, i) => (
             <motion.div
               key={i}
               whileHover={{ scale: 1.05 }}
-              className="p-6 bg-blue-800/30 rounded-2xl shadow-lg"
+              className="p-6 bg-gradient-to-tr from-blue-800/50 to-indigo-900/30 rounded-2xl shadow-lg border border-yellow-300"
             >
               <img
-                src={`/images/chef${i + 1}.webp`}
-                alt={name}
+                src={chef.img}
+                alt={chef.name}
                 className="w-full h-60 object-cover rounded-xl mb-4"
               />
-              <h3 className="text-xl font-semibold">{name}</h3>
+              <h3 className="text-xl font-semibold">{chef.name}</h3>
               <p className="text-gray-400 text-sm">
                 Master of flavors and culinary creativity.
               </p>
+              <div className="flex justify-center mt-3 space-x-4 text-yellow-300">
+                <Coffee className="w-5 h-5 animate-bounce" />
+                <ChefHat className="w-5 h-5 animate-bounce delay-200" />
+              </div>
             </motion.div>
           ))}
         </div>
