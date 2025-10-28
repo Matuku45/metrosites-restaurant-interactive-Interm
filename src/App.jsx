@@ -1,35 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
+      <div className="flex flex-col items-center justify-center min-h-screen bg-white p-6">
+        <h1 className="text-4xl md:text-6xl font-bold mb-4 text-blue-600 drop-shadow-sm">
+          🍽️ MetroSites Restaurant
+        </h1>
+
+        <p className="text-lg md:text-xl text-center max-w-xl mb-8 text-blue-400">
+          Experience the taste of perfection — fresh ingredients, creative dishes,
+          and a cozy atmosphere that makes every visit unforgettable.
         </p>
+
+        <button
+          onClick={() => setCount(count + 1)}
+          className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition-transform transform hover:scale-105"
+        >
+          Reserve Table ({count})
+        </button>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
