@@ -85,7 +85,7 @@ export default function Blog() {
         transition={{ duration: 0.8 }}
         className="text-5xl font-bold mb-12 text-center text-yellow-300"
       >
-        Our <span className="text-white">Blog & Specials</span>
+        Our <span className="text-white">Blog</span>
       </motion.h1>
 
       {/* Blog Cards */}
