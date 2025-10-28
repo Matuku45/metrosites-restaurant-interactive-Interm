@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ChefHat, Coffee, Wine, Star, Leaf } from "lucide-react";
 
-// Import dish images
+// Dish images
 import salmon from "../assets/grilledsalmon.webp";
 import beef from "../assets/beefwillington.webp";
 import pasta from "../assets/pasta.webp";
@@ -77,7 +77,6 @@ export default function Menu() {
       img: wineTest,
       icon: <Wine />,
     },
-    // Adding rest1-rest7 as gallery-style menu items
     {
       name: "Restaurant View 1",
       desc: "Enjoy the cozy atmosphere of our restaurant.",
@@ -129,11 +128,10 @@ export default function Menu() {
     },
   ];
 
-  const formatCurrency = (amount) => {
-    return amount > 0
+  const formatCurrency = (amount) =>
+    amount > 0
       ? new Intl.NumberFormat("en-ZA", { style: "currency", currency: "ZAR" }).format(amount)
       : "—";
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-indigo-900 via-blue-900 to-blue-950 text-white py-20 px-6">
@@ -159,31 +157,26 @@ export default function Menu() {
             key={i}
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 200 }}
-            className="relative overflow-hidden rounded-3xl shadow-2xl border border-yellow-300 cursor-pointer group bg-gradient-to-t from-blue-900/60 via-indigo-900/50 to-transparent"
+            className="relative overflow-hidden rounded-3xl shadow-2xl border border-yellow-300 cursor-pointer"
           >
             <img
               src={item.img}
               alt={item.name}
-              className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+              className="w-full h-64 object-cover"
             />
 
             {/* Overlay */}
-            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 bg-black/40"></div>
 
-            {/* Icon */}
-            <div className="absolute top-4 left-4 text-yellow-300">
-              {React.cloneElement(item.icon, { className: "w-8 h-8" })}
-            </div>
-
-            {/* Caption & Description */}
-            <motion.div
-              initial={{ opacity: 1, y: 0 }}
-              className="absolute bottom-4 left-4 right-4 text-white p-4 bg-black/50 rounded-xl backdrop-blur-md shadow-lg"
-            >
-              <h3 className="font-bold text-xl mb-1">{item.name}</h3>
+            {/* Caption & Description always visible */}
+            <div className="absolute inset-0 flex flex-col justify-end p-4 bg-black/50 backdrop-blur-md">
+              <div className="flex items-center justify-start mb-2">
+                {React.cloneElement(item.icon, { className: "w-8 h-8 text-yellow-300 mr-2" })}
+                <h3 className="font-bold text-xl">{item.name}</h3>
+              </div>
               <p className="text-gray-200 text-sm mb-2">{item.desc}</p>
               <p className="text-yellow-300 font-bold">{formatCurrency(item.price)}</p>
-            </motion.div>
+            </div>
           </motion.div>
         ))}
       </div>
