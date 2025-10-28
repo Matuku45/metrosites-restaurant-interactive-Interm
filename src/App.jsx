@@ -1,18 +1,40 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+// Components
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Home from "./pages/Home";
-function App() {
-  const [count, setCount] = useState(0);
 
+// Pages
+import Home from "./pages/Home";
+import Blog from "./pages/Blog";
+import Menu from "./pages/Menu";
+import ChefSpecials from "./pages/ChefSpecials";
+import Offers from "./pages/Offers";
+import Events from "./pages/Events";
+import Gallery from "./pages/Gallery";
+
+function App() {
   return (
-    <>
-      <div>
-       <Header/>
-       <Home/>
-       <Footer/>
+    <Router>
+      <div className="flex flex-col min-h-screen">
+        <Header />
+
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/menu" element={<Menu />} />
+            <Route path="/chef-specials" element={<ChefSpecials />} />
+            <Route path="/offers" element={<Offers />} />
+            <Route path="/events" element={<Events />} />
+            <Route path="/gallery" element={<Gallery />} />
+          </Routes>
+        </main>
+
+        <Footer />
       </div>
-    </>
+    </Router>
   );
 }
 
