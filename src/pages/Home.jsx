@@ -18,15 +18,15 @@ export default function Home() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
-      className="relative min-h-screen text-white overflow-hidden"
+      className="relative text-white overflow-hidden"
     >
       {/* 🌈 Animated Gradient Background */}
       <div className="absolute inset-0 -z-20">
         <motion.div
           animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
           transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-          className="w-full h-screen bg-gradient-to-r from-blue-900 via-indigo-900 to-purple-900 bg-[length:200%_200%]"
-        ></motion.div>
+          className="w-full h-full bg-gradient-to-r from-blue-900 via-indigo-900 to-purple-900 bg-[length:200%_200%]"
+        />
       </div>
 
       {/* 🌟 Background Carousel */}
@@ -36,14 +36,14 @@ export default function Home() {
           effect="fade"
           loop
           autoplay={{ delay: 4000, disableOnInteraction: false }}
-          className="w-full h-screen"
+          className="w-full h-full"
         >
           {heroImages.map((img, idx) => (
             <SwiperSlide key={idx}>
               <img
                 src={img}
                 alt={`Slide ${idx + 1}`}
-                className="w-full h-screen object-cover brightness-50"
+                className="w-full h-full object-cover brightness-50"
               />
             </SwiperSlide>
           ))}
@@ -54,14 +54,14 @@ export default function Home() {
       <motion.div
         className="absolute top-10 left-10 space-y-8"
         animate={{ y: [0, -20, 0], rotate: [0, 15, -15, 0] }}
-        transition={{ duration: 6, repeat: Infinity }}
+        transition={{ duration: 6, repeat: Infinity, ease: "linear", type: "tween" }}
       >
         <Coffee className="w-8 h-8 text-yellow-400 opacity-70" />
         <Leaf className="w-6 h-6 text-green-400 opacity-60" />
       </motion.div>
 
       {/* ✨ Welcome Section */}
-      <div className="relative z-10 flex flex-col items-center justify-center text-center min-h-screen px-6">
+      <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 py-32 md:py-40">
         <motion.div
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -76,6 +76,7 @@ export default function Home() {
           </p>
           <motion.button
             whileHover={{ scale: 1.1, rotate: [0, 2, -2, 0] }}
+            transition={{ type: "tween", duration: 0.4 }}
             className="px-8 py-3 bg-yellow-300 text-blue-900 font-semibold rounded-2xl hover:bg-yellow-400 transition-all shadow-lg"
           >
             Book a Table
@@ -115,7 +116,7 @@ export default function Home() {
             <motion.div
               key={i}
               whileHover={{ scale: 1.1, y: -5, rotate: [0, 2, -2, 0] }}
-              transition={{ type: "spring", stiffness: 200 }}
+              transition={{ type: "tween", duration: 0.4 }}
               className="bg-gradient-to-t from-blue-900/60 to-indigo-900/40 backdrop-blur-lg rounded-3xl p-8 shadow-2xl border border-yellow-400 hover:border-yellow-300"
             >
               {item.icon}
@@ -139,6 +140,7 @@ export default function Home() {
         </h2>
         <motion.button
           whileHover={{ scale: 1.1, rotate: [0, 1, -1, 0] }}
+          transition={{ type: "tween", duration: 0.3 }}
           className="px-12 py-4 bg-yellow-300 text-blue-900 font-bold rounded-2xl hover:bg-yellow-400 transition-all shadow-2xl"
         >
           Explore Menu
@@ -146,7 +148,7 @@ export default function Home() {
       </motion.div>
 
       {/* 🍴 Extra Section: Why Choose Us */}
-      <div className="relative z-10 container mx-auto text-center py-24 px-6">
+      <div className="relative z-10 container mx-auto text-center py-24 px-6 mb-32">
         <motion.h2
           initial={{ y: 50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}

@@ -15,9 +15,9 @@ export default function Header() {
   ];
 
   const extraLinks = [
-    { name: "Reservations", to: "/reservations" },
+  
     { name: "Gallery", to: "/gallery" },
-    { name: "Testimonials", to: "/testimonials" },
+   
     { name: "Blog", to: "/blog" },
     { name: "About", to: "/about" },
     { name: "Contact", to: "/contact" },
